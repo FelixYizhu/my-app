@@ -101,6 +101,10 @@ class Game extends React.Component {
     else{
       status='Next player: '+(this.state.xIsNext ? 'x' : 'o');
     }
+    const tim;
+  tick() {
+      tim=(<h1>It is {new Date().toLocaleTimeString()}</h1>);
+    };
 
 
     return (
@@ -112,6 +116,7 @@ class Game extends React.Component {
           />
         </div>
         <div className="game-info">
+          <div>{setInterval(tick,1000)}</div>
           <div>{status}</div>
           <ol>{moves}</ol>
         </div>
