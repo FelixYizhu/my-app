@@ -78,6 +78,11 @@ class Game extends React.Component {
       xIsNext:(step % 2) ===0,
     });
   }
+   tick() {
+     // eslint-disable-next-line no-unused-expressions
+     <h1>It is {new Date().toLocaleTimeString()}</h1>;
+    };
+
   render() {
     const history=this.state.history;
     const current=history[this.state.stepNumber];
@@ -101,11 +106,6 @@ class Game extends React.Component {
     else{
       status='Next player: '+(this.state.xIsNext ? 'x' : 'o');
     }
-    const tim;
-  tick() {
-      tim=(<h1>It is {new Date().toLocaleTimeString()}</h1>);
-    };
-
 
     return (
       <div className="game">
@@ -116,7 +116,7 @@ class Game extends React.Component {
           />
         </div>
         <div className="game-info">
-          <div>{setInterval(tick,1000)}</div>
+          <div>{setInterval(this.tick,1000)}</div>
           <div>{status}</div>
           <ol>{moves}</ol>
         </div>
