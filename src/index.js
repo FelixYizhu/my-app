@@ -13,16 +13,6 @@ function Square(props){
     );
 }
 
-function Welcome(propos){
-return <h1>Hello, {props.history}</h1>
-}
-class Welcome extends React.Component(){
-  render(){
-  return <h1>Hello, {this.props.history}</h1>
-  }
-}
-
-
 class Board extends React.Component {
 
   renderSquare(i) {
@@ -40,47 +30,26 @@ class Board extends React.Component {
           {this.renderSquare(0)}
           {this.renderSquare(1)}
           {this.renderSquare(2)}
-          {this.renderSquare(3)}
-          {this.renderSquare(4)}
         </div>
         <div className="board-row">
+          {this.renderSquare(3)}
+          {this.renderSquare(4)}
           {this.renderSquare(5)}
+        </div>
+        <div className="board-row">
           {this.renderSquare(6)}
           {this.renderSquare(7)}
           {this.renderSquare(8)}
-          {this.renderSquare(9)}
-        </div>
-        <div className="board-row">
-          {this.renderSquare(10)}
-          {this.renderSquare(11)}
-          {this.renderSquare(12)}
-          {this.renderSquare(13)}
-          {this.renderSquare(14)}
-        </div>
-        <div className="board-row">
-          {this.renderSquare(15)}
-          {this.renderSquare(16)}
-          {this.renderSquare(17)}
-          {this.renderSquare(18)}
-          {this.renderSquare(19)}
-        </div>
-        <div className="board-row">
-          {this.renderSquare(20)}
-          {this.renderSquare(21)}
-          {this.renderSquare(22)}
-          {this.renderSquare(23)}
-          {this.renderSquare(24)}
         </div>
       </div>
     );
   }
 }
-
 class Game extends React.Component {
   constructor(props){
     super(props);
     this.state={
-      history:[{squares:Array(25).fill(null),
+      history:[{squares:Array(9).fill(null),
       }],
       stepNumber:0,
       xIsNext:true,
@@ -109,14 +78,10 @@ class Game extends React.Component {
       xIsNext:(step % 2) ===0,
     });
   }
-  formateDate(props){
-    return this.props.date;
-  }
   render() {
     const history=this.state.history;
     const current=history[this.state.stepNumber];
     const winner=calculateWinner(current.squares);
-    const date=new Date();
     const moves=history.map((step,move) =>{
       const desc=move ? 
       'Go to move # ' + move :
@@ -145,7 +110,6 @@ class Game extends React.Component {
           />
         </div>
         <div className="game-info">
-    <div>{formateDate()}</div>
           <div>{status}</div>
           <ol>{moves}</ol>
         </div>
@@ -155,7 +119,6 @@ class Game extends React.Component {
 }
 
 // ========================================
-
 ReactDOM.render(
   <Game />,
   document.getElementById('root')
