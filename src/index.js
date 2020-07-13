@@ -113,6 +113,7 @@ class Game extends React.Component {
           <div>{status}</div>
           <ol>{moves}</ol>
         </div>
+        <div><a href="test.js">go to time page</a></div>
       </div>
     );
   }
